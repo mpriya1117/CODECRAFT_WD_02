@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Priya's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #FAF9F6;
+      --primary: #A3C4F3;
+      --secondary: #FFB7B2;
+      --text: #4A4A4A;
+      --section: #FDF1F1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text);
+    }
+
+    header {
+      background-color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: var(--primary);
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: var(--secondary);
+    }
+
+    section {
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #FAF9F6, #EDE7F6);
+      padding-top: 120px;
+    }
+
+    .hero h2 {
+      font-size: 40px;
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-top: 10px;
+      color: #666;
+    }
+
+    .about, .skills, .projects, .contact {
+      background-color: var(--section);
+      margin: 30px auto;
+      border-radius: 15px;
+      max-width: 900px;
+      padding: 50px 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    }
+
+    .about img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h3 {
+      font-size: 28px;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .skills .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .skills .tag {
+      background-color: var(--primary);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    .projects .project {
+      background-color: white;
+      padding: 20px;
+      margin: 15px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      max-width: 600px;
+    }
+
+    .project h4 {
+      color: var(--secondary);
+      margin-bottom: 10px;
+    }
+
+    .project a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .contact input, .contact textarea {
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    .contact button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #f2f2f2;
+      color: #888;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    @media screen and (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Priya</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <h2>Hello, I’m Priya 👋</h2>
+    <p>Crafting clean web experiences with a creative touch.</p>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <img src="https://static.vecteezy.com/system/resources/previews/005/276/776/original/logo-icon-person-on-white-background-free-vector.jpg" alt="Priya's Photo" />
+    <h3>About Me</h3>
+    <p>I’m a Computer Science student passionate about web design and development. I love combining logic with creativity to build user-friendly digital experiences.</p>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills" id="skills">
+    <h3>Skills</h3>
+    <div class="tags">
+      <div class="tag">HTML</div>
+      <div class="tag">CSS</div>
+      <div class="tag">JavaScript</div>
+      <div class="tag">Python</div>
+      <div class="tag">GitHub</div>
+      <div class="tag">Canva</div>
+      <div class="tag">UI/UX</div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects" id="projects">
+    <h3>Projects</h3>
+    <div class="project">
+      <h4>🌐 Responsive Landing Page</h4>
+      <p>A mobile-friendly, scroll-animated landing page built using HTML, CSS, and JavaScript.</p>
+      <a href="#">View Project</a>
+    </div>
+    <div class="project">
+      <h4>📱 Digital Clock App</h4>
+      <p>A real-time clock built with Python and Pygame for my college mini project.</p>
+      <a href="#">GitHub Code</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h3>Contact Me</h3>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Priya's Portfolio | Designed with 💗 pastel dreams
+  </footer>
+
+</body>
+</html>

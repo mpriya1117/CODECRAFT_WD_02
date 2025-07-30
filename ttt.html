@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic-Tac-Toe</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 5px;
+      justify-content: center;
+      margin: 20px auto;
+    }
+
+    .cell {
+      width: 100px;
+      height: 100px;
+      background-color: #1e1e1e;
+      border: 2px solid #444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      cursor: pointer;
+    }
+
+    .cell.x {
+      color: #00bcd4;
+    }
+
+    .cell.o {
+      color: #f44336;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #00bcd4;
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tic-Tac-Toe</h1>
+
+  <div class="board" id="board">
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+  </div>
+
+  <h2 id="winningMessage" class="hide"></h2>
+  <button id="restartButton">Restart Game</button>
+
+  <script>
+    const cells = document.querySelectorAll('[data-cell]');
+    const board = document.getElementById('board');
+    const winningMessage = document.getElementById('winningMessage');
+    const restartButton = document.getElementById('restartButton');
+
+    let isCircleTurn;
+
+    const winningCombinations = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8],
+      [0, 3, 6], [1, 4, 7], [2, 5, 8],
+      [0, 4, 8], [2, 4, 6]
+    ];
+
+    startGame();
+
+    restartButton.addEventListener('click', startGame);
+
+    function startGame() {
+      isCircleTurn = false;
+      cells.forEach(cell => {
+        cell.classList.remove('x', 'o');
+        cell.textContent = '';
+        cell.removeEventListener('click', handleClick);
+        cell.addEventListener('click', handleClick, { once: true });
+      });
+      winningMessage.classList.add('hide');
+    }
+
+    function handleClick(e) {
+      const cell = e.target;
+      const currentClass = isCircleTurn ? 'o' : 'x';
+      placeMark(cell, currentClass);
+
+      if (checkWin(currentClass)) {
+        endGame(false);
+      } else if (isDraw()) {
+        endGame(true);
+      } else {
+        isCircleTurn = !isCircleTurn;
+      }
+    }
+
+    function placeMark(cell, currentClass) {
+      cell.classList.add(currentClass);
+      cell.textContent = currentClass.toUpperCase();
+    }
+
+    function checkWin(currentClass) {
+      return winningCombinations.some(combination => {
+        return combination.every(index => {
+          return cells[index].classList.contains(currentClass);
+        });
+      });
+    }
+
+    function isDraw() {
+      return [...cells].every(cell => {
+        return cell.classList.contains('x') || cell.classList.contains('o');
+      });
+    }
+
+    function endGame(draw) {
+      winningMessage.classList.remove('hide');
+      winningMessage.textContent = draw ? "It's a Draw!" : `${isCircleTurn ? 'O' : 'X'} Wins!`;
+    }
+  </script>
+
+</body>
+</html>
